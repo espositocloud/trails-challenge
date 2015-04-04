@@ -1,0 +1,36 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.row .col {
+  padding: 0px 0px;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+#center {
+  position: relative;
+  z-index: 1;
+}
+
+a.content {
+  color: #000;
+}
+
+/* label focus color */
+.input-field input[type=number]:focus + label {
+  color: #607d8b;
+}
+/* label underline focus color */
+.input-field input[type=number]:focus {
+  border-bottom: 1px solid #607d8b;
+  box-shadow: 0 1px 0 0 #000;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #607d8b;
+}

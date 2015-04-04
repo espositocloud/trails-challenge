@@ -1,0 +1,23 @@
+<table class="bordered striped hoverable centered">
+  <thead>
+    <tr>
+      <th>Insert Time</th>
+      <th>User</th>
+      <th>Technique</th>
+      <th>Patrol (Group)</th>
+      <th>Technique Score</th>
+      <th>Style Score</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="t in tests">
+      <td>{{ t.created_date_hms }}</td>
+      <td>{{ t.user }}</td>
+      <td>{{ t.technique_name }}</td>
+      <td>{{ t.patrol_name }} ({{ t.group_name }})</td>
+      <td>{{ t.technique_score }}</td>
+      <td>{{ t.style_score }}</td>
+    <tr>
+  </tbody>
+</table>

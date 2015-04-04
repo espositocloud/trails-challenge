@@ -1,0 +1,20 @@
+<table class="bordered striped hoverable centered">
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>Patrol</th>
+      <th>Scores</th>
+      <th>Ranking</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="p in patrols | orderBy:['-conditions', 'ranking', '-total_score']">
+      <td>{{ p.group }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ p.total_score }}</td>
+      <td ng-if="p.ranking>0">{{ p.ranking }}</td>
+      <td ng-if="p.ranking<=0" class="red-text mdi-navigation-close"></td>
+    </tr>
+  </tbody>
+</table>

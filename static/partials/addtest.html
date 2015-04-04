@@ -1,0 +1,68 @@
+<h4>Add a new test</h4>
+
+<div class="card-panel blue-grey-text">{{ feedback.data | json }}</div>
+
+<form ng-submit="save()">
+
+  <div class="row">
+    <div class="col s4">
+      <label>Technique</label>
+      <select class="browser-default" ng-model="newTest.technique">
+        <option value="" disabled selected>Select the Technique</option>
+        <option value="{{ t.name }}" ng-repeat="t in techniques">{{ t.name }}</option>
+      </select>
+    </div>
+    <div class="col s4">
+      <label>Group</label>
+      <select class="browser-default" ng-model="search.group">
+        <option value="" disabled selected>Select the Group</option>
+        <option value="{{ g.name }}" ng-repeat="g in groups">{{ g.name }}</option>
+      </select>
+    </div>
+    <div class="col s4">
+      <label>Patrol</label>
+      <select class="browser-default" ng-model="newTest.patrol">
+        <option value="" disabled selected>Select the Patrol</option>
+        <option value="{{ p.name }}" ng-repeat="p in patrols | filter:search:strict">{{ p.name }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="input-field col s6">
+      <input type="number" ng-model="newTest.technique_score" name="technique_score" class="validate" min=1 max=5 ng-minlength=1 ng-maxlength=1 required>
+      <label for="technique_score">Technique Score</label>
+    </div>
+    <div class="input-field col s6">
+      <input type="number" ng-model="newTest.style_score" name="style_score" class="validate" min=1 max=5 ng-minlength=1 ng-maxlength=1 required>
+      <label for="style_score">Style Score</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <a href="#confirm-add-test" class="modal-trigger btn blue-grey">Save..</a>
+  </div>
+
+  <div id="confirm-add-test" class="modal">
+    <div class="modal-content">
+      <h4>Confirm?</h4>
+      <ul>
+        <li>Technique  <strong class="text-blue-grey">{{ newTest.technique }}</strong></li>
+        <li>Group  <strong class="text-blue-grey">{{ search.group }}</strong></li>
+        <li>Patrol  <strong class="text-blue-grey">{{ newTest.patrol }}</strong></li>
+        <li>Technique Score  <strong class="text-blue-grey">{{ newTest.technique_score }}</strong></li>
+        <li>Style Score  <strong class="text-blue-grey">{{ newTest.style_score }}</strong></li>
+      </ul>
+    </div>
+
+    <div class="modal-footer">
+      <div class="col s2">
+        <a href="" ng-click="save()" class="blue-grey modal-trigger btn waves-effect waves-light">Save</a>
+      </div>
+      <div class="col s2">
+        <a class="red-text btn btn-flat waves-effect waves-light modal-action modal-close">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+</form>

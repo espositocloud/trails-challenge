@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Trails Challenge</title>
+    <link rel="stylesheet" href="/static/materialize.min.css">
+    <link rel="stylesheet" href="/static/app.css">
+    <script type="text/javascript" src="/static/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/materialize.min.js"></script>
+    <script type="text/javascript" src="/static/angular.min.js"></script>
+    <script type="text/javascript" src="/static/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="/static/satellizer.min.js"></script>
+    <script type="text/javascript" src="/static/restangular.min.js"></script>
+    <script type="text/javascript" src="/static/lodash.min.js"></script>
+    <script type="text/javascript" src="/static/app.js"></script>
+  </head>
+  <body class="blue-grey">
+    <header>
+      <nav class="blue-grey">
+        <div class="nav-wrapper container">
+          <a href="" ng-click="goHome()" class="brand-logo">Trails Challenge</a>
+          <ul class="right">
+            <li ng-show="isAuth()">Hi {{ username }}!</li>
+            <li><a class="waves-effect waves-light" href="" ui-sref="addtest">Add Test</a></li>
+            <li ng-show="!isAuth()"><a class="waves-effect waves-light modal-trigger" href="#login-form">LOGIN</a></li>
+            <li ng-show="isAuth()"><a class="waves-effect waves-light" href="" ng-click="logout()">LOGOUT</a></li>
+            <li><a class="waves-effect waves-light" href="/admin" target="_blank">ADMIN</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="blue-grey">
+      <div class="row">
+
+        <span class="col s2">
+          <img class="responsive-img" src="static/bg-left.png" />
+        </span>
+
+        <div id="center" class="col s8 z-depth-5">
+         <div class="row">
+          <ul class="tabs">
+            <li class="tab col s3 blue-grey darken-1"><a class="white-text waves-effect waves-light active" href="#tab4" ui-sref="summary">Summary</a></li>
+            <li class="tab col s3 blue-grey darken-1"><a class="white-text waves-effect waves-light" href="#tab3" ui-sref="ranking">Ranking List</a></li>
+            <li class="tab col s3 blue-grey darken-1"><a class="white-text waves-effect waves-light" href="#tab2" ui-sref="techniques">Techniques Monitor</a></li>
+            <li class="tab col s3 blue-grey darken-1"><a class="white-text waves-effect waves-light" href="#tab1" ui-sref="tests">Tests Flux</a></li>
+          </ul>
+        </div>
+        <div ui-view>
+        </div>
+
+      </div>
+
+      <span class="col s2">
+        <img class="responsive-img" src="static/bg-right.png" />
+      </span>
+
+    </main>
+
+    <footer class="page-footer blue-grey">
+      <div class="footer-copyright white-text">
+        <div class="container row">
+          <span class="text-lighten-3">March 22, 2015 - Osimo (AN)</span>
+          <span class="text-lighten-4 right">Trails Challenge is Free Software released under the GNU AGPLv3</span>
+        </div>
+      </div>
+    </footer>
+
+    <div id="login-form" class="modal">
+      <div class="modal-content">
+        <h4>Login</h4>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input ng-model="username" id="username" type="text" class="validate">
+                <label for="username">Username</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input ng-model="password" id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a ng-click="login()" href="#" class="waves-effect waves-blue-grey waves-grey-blue btn modal-action modal-close">GO</a>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<h4>Index</h4>
+<br/>
+
+<table class="bordered striped hoverable">
+  <tr ng-repeat="g in groups | orderBy:'name'">
+    <th class="center"><a class="content" href="" ng-href="#{{ g.name }}" target="_self">{{ g.name }}</a></th>
+    <td>
+      <span ng-repeat="p in g.patrols | orderBy:['-conditions','ranking']"><a class="content" href="" ng-href="#{{ g.name }}-{{ p.name }}" target="_self">{{ p.name }}</a><span ng-if="$last==false">, &nbsp;</span></span>
+    </td>
+  </tr>
+</table>
+
+<br/>
+<br/>
+
+<span ng-repeat="g in groups | orderBy:'name'">
+<h4 class="center" id="{{ g.name }}">{{ g.name }}</h4>
+
+<span ng-repeat="p in g.patrols | orderBy:['-conditions','ranking']">
+<span class="white-text" id="{{ g.name }}-{{ p.name }}">{{ g.name }}</span>
+<h5>{{ p.name }}</h5>
+
+<table class="hoverable centered">
+  <thead>
+    <tr>
+      <th>Total Score</th>
+      <th>Hour Condition</th>
+      <th>Check Condition</th>
+      <th>Ranking</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="white-text">
+      <td>{{ p.total_score }}</td>
+      <td ng-if="p.hour_condition==true" class="mdi-navigation-check"></td>
+      <td ng-if="p.hour_condition==false" class="mdi-navigation-close"></td>
+      <td ng-if="p.check_condition==true" class="mdi-navigation-check"></td>
+      <td ng-if="p.check_condition==false" class="mdi-navigation-close"></td>
+      <td ng-if="p.ranking>0">{{ p.ranking }}</td>
+      <td ng-if="p.ranking<=0" class="mdi-navigation-close"></td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
+<table class="bordered striped hoverable centered" ng-if="p.tests.length>0">
+  <thead>
+    <tr>
+      <th>Technique</th>
+      <th>Technique Score</th>
+      <th>Style Score</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="t in p.tests">
+      <td>{{ t.technique_name }}</td>
+      <td>{{ t.technique_score }}</td>
+      <td>{{ t.style_score }}</td>
+    </tr>
+    <tr>
+      <td><strong>Average Scores</strong></td>
+      <td><strong>{{ p.avg_technique_score | number:2 }}</strong></td>
+      <td><strong>{{ p.avg_style_score | number:2 }}</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<br/>
+<br/>
+</span>
+</span>

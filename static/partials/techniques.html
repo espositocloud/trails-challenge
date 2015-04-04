@@ -1,0 +1,17 @@
+<table class="bordered striped hoverable centered">
+  <thead>
+    <tr>
+      <th>Technique</th>
+      <th>Patrols Tested</th>
+      <th>Last Patrol</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="t in techniques | orderBy:['patrols_number','last_patrol']">
+      <td>{{ t.name }}</td>
+      <td>{{ t.patrols_number }}</td>
+      <td>{{ t.last_patrol }}</td>
+    <tr>
+  </tbody>
+</table>

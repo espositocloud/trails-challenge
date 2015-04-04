@@ -1,0 +1,7 @@
+*.pyc
+*.swp
+deploy/*.log
+deploy/*.fifo
+deploy/*.pid
+__pycache__
+.gitconfig
